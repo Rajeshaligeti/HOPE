@@ -6,9 +6,9 @@ services:
     staticPublishPath: ./dist
     envVars:
       - key: VITE_GEMINI_API_KEY
-        value: AIzaSyBPohiYFxkQvpmmzI9okSM8J2zVVV3dBkA
+        sync: false
       - key: VITE_GOOGLE_API_KEY
-        value: AIzaSyDcD5xImMO5q91VaXE5g4BGMg8gjqkC_LU
+        sync: false
     routes:
       - type: rewrite
         source: /*
