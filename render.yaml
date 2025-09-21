@@ -1,0 +1,15 @@
+services:
+  - type: web
+    name: hope-health
+    env: static
+    buildCommand: npm install --include=dev && npm run build
+    staticPublishPath: ./dist
+    envVars:
+      - key: VITE_GEMINI_API_KEY
+        value: AIzaSyBPohiYFxkQvpmmzI9okSM8J2zVVV3dBkA
+      - key: VITE_GOOGLE_API_KEY
+        value: AIzaSyDcD5xImMO5q91VaXE5g4BGMg8gjqkC_LU
+    routes:
+      - type: rewrite
+        source: /*
+        destination: /index.html

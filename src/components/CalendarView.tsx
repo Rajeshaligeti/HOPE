@@ -1,8 +1,9 @@
-import { useState, memo } from 'react';
+import { useState, memo, useCallback } from 'react';
 import { Calendar, ChevronLeft, ChevronRight, Plus, Clock, Pill, Activity } from 'lucide-react';
 import { Card } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
+import { AddEventDialog } from './AddEventDialog';
 
 interface CalendarEvent {
   id: string;
@@ -16,9 +17,7 @@ interface CalendarEvent {
 const CalendarView = memo(() => {
   const [currentDate, setCurrentDate] = useState(new Date());
   const [selectedDate, setSelectedDate] = useState(new Date());
-
-  // Mock calendar events
-  const events: Record<string, CalendarEvent[]> = {
+  const [events, setEvents] = useState<Record<string, CalendarEvent[]>>({
     '2024-01-15': [
       {
         id: '1',
@@ -65,7 +64,7 @@ const CalendarView = memo(() => {
         description: 'Regular check-up with Dr. Smith'
       }
     ]
-  };
+  });
 
   const getDaysInMonth = (date: Date) => {
     return new Date(date.getFullYear(), date.getMonth() + 1, 0).getDate();
@@ -133,6 +132,25 @@ const CalendarView = memo(() => {
     const newDate = new Date(currentDate.getFullYear(), currentDate.getMonth(), day);
     setSelectedDate(newDate);
   };
+
+  const handleAddEvent = useCallback((eventData: { 
+    title: string;
+    time: string;
+    type: CalendarEvent['type'];
+    description: string;
+  }) => {
+    const dateKey = formatDateKey(selectedDate);
+    const newEvent: CalendarEvent = {
+      id: Date.now().toString(),
+      ...eventData,
+      status: 'pending'
+    };
+
+    setEvents(prev => ({
+      ...prev,
+      [dateKey]: [...(prev[dateKey] || []), newEvent]
+    }));
+  }, [selectedDate]);
 
   const selectedDateEvents = events[formatDateKey(selectedDate)] || [];
   const daysInMonth = getDaysInMonth(currentDate);
@@ -228,10 +246,16 @@ const CalendarView = memo(() => {
                 year: 'numeric'
               })}
             </h3>
-            <Button size="sm" className="btn-primary">
-              <Plus className="w-3 h-3 mr-1" />
-              Add
-            </Button>
+            <AddEventDialog
+              selectedDate={selectedDate}
+              onAddEvent={handleAddEvent}
+              trigger={
+                <Button size="sm" className="btn-primary">
+                  <Plus className="w-3 h-3 mr-1" />
+                  Add
+                </Button>
+              }
+            />
           </div>
 
           <div className="space-y-3">
