@@ -1,6 +1,6 @@
 # 🏥 HOPE — AI-Powered Healthcare & Wellness Platform
 
-🌐 **Live Website:** https://hope-health.vercel.app  
+🌐 **Live Website:** hope-nine-tau.vercel.app 
 
 HOPE is a full-stack MERN healthcare application designed to help users proactively manage their health through AI-driven symptom analysis, personal health tracking, and integrated wellness tools — all in one platform.
 
