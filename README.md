@@ -1,114 +1,192 @@
 # 🏥 HOPE — AI-Powered Healthcare & Wellness Platform
 
-🌐 **Live Website:** ![hope-nine-tau.vercel.app](WEBSITE) 
+HOPE is a modern healthcare application designed to help users track their health metrics, schedule medical appointments, and receive AI-powered health insights. The application features real-time updates, integration with Google Calendar, and a smart chatbot for health-related queries.
 
-HOPE is a full-stack MERN healthcare application designed to help users proactively manage their health through AI-driven symptom analysis, personal health tracking, and integrated wellness tools — all in one platform.
+## 🌟 Features
 
-The goal of HOPE is to provide an accessible digital health assistant that combines machine learning insights with practical daily healthcare features.
+### Health Tracking
+- Track daily health metrics including:
+  - Weight and BMI
+  - Blood Pressure
+  - Heart Rate
+  - Sleep Hours
+  - Step Count
+  - Water Intake
+  - Mood
 
----
+### Smart Calendar Integration
+- Sync with Google Calendar
+- Automated scheduling for:
+  - Medical appointments
+  - Exercise routines
+  - Medication reminders
+- Calendar event categorization (medication, exercise, practice)
 
-## 🚀 Features
+### AI-Powered Features
+- Personalized health predictions
+- Smart chatbot for health queries
+- Automated medication scheduling
+- Exercise and wellness recommendations
 
-### 🤖 AI Symptom Analyzer
-- Users can input symptoms and receive AI-powered health insights.
-- Provides guidance and suggested next steps.
-- Stores previous symptom history.
+### Real-time Updates
+- WebSocket integration for instant data synchronization
+- Live updates across multiple devices
+- Real-time health metric monitoring
 
-### 📅 Calendar & Health Reminders
-- Schedule doctor appointments and wellness activities.
-- Set reminders for medications and routines.
-- Optional Google Calendar integration.
+### Video Content
+- Curated health and wellness videos
+- Exercise tutorials
+- Filtered content (excluding shorts)
+- Customizable search queries
 
-### 📊 BMI Calculator & Health Metrics
-- Calculates BMI based on height and weight.
-- Displays health category with recommendations.
+## 🚀 Getting Started
 
-### 🎥 Health Videos & Resources
-- Curated educational videos on fitness, nutrition, and wellness.
+### Prerequisites
+- Node.js (v18 or higher)
+- npm or yarn
+- Google API credentials (for Calendar and YouTube integration)
 
-### ⚙️ Personalization & Settings
-- Theme customization
-- Notification preferences
-- User profile management
+### Installation
 
----
+1. Clone the repository:
+```bash
+git clone https://github.com/Rajeshaligeti/HOPE-Healthcare_Oriented_Proactive_Essence.git
+cd HOPE-Healthcare_Oriented_Proactive_Essence
+```
 
-## 🧠 System Architecture
+2. Install backend dependencies:
+```bash
+cd backend
+npm install
+```
 
-Frontend (React)
-→ Backend (Node + Express)
-→ MongoDB
-→ Gemini AI Services
+3. Install frontend dependencies:
+```bash
+cd frontend
+npm install
+```
 
----
+4. Create environment variables:
 
-## 🛠 Tech Stack
+Backend (.env):
+```env
+PORT=5000
+GOOGLE_API_KEY=your_google_api_key
+GCAL_SERVICE_ACCOUNT_JSON_BASE64=your_service_account_json
+GCAL_CALENDAR_ID=your_calendar_id
+MONGODB_URI=your_mongodb_uri
+```
 
-Frontend: React, Tailwind CSS, ShadCN UI  
-Backend: Node.js, Express.js  
-Database: MongoDB  
-AI: Gemini API  
-Deployment: Vercel
+Frontend (.env):
+```env
+VITE_API_BASE=http://localhost:5000/api
+```
 
----
-
-## 📁 Project Structure
-
-hope/
- ├── client/  
- ├── server/  
- ├── uploads/  
- └── README.md  
-
----
-
-## ⚡ Getting Started
-
-### Clone
-
-git clone <your-repo-url>  
-cd hope  
-
-### Install
-
-cd server && npm install  
-cd client && npm install  
-
-### Environment (.env)
-
-PORT=5000  
-MONGO_URI=your_mongodb_url  
-JWT_SECRET=your_secret  
-GEMINI_API_KEY=your_api_key  
-
-### Run
+5. Start the development servers:
 
 Backend:
-npm start
+```bash
+cd backend
+npm run dev
+```
 
 Frontend:
+```bash
+cd frontend
 npm run dev
+```
+
+## 🏗️ Project Structure
+
+```
+├── backend/
+│   ├── src/
+│   │   ├── models/
+│   │   │   ├── CalendarItem.js
+│   │   │   └── HealthData.js
+│   │   ├── routes/
+│   │   │   ├── ai.js
+│   │   │   ├── calendar.js
+│   │   │   ├── google.js
+│   │   │   └── healthData.js
+│   │   ├── server.js
+│   │   └── websocket.js
+│   └── package.json
+└── frontend/
+    ├── src/
+    │   ├── components/
+    │   │   ├── AIPredictions.jsx
+    │   │   ├── BMICalculator.jsx
+    │   │   ├── Charts.jsx
+    │   │   ├── Chatbot.jsx
+    │   │   ├── HealthCalendar.jsx
+    │   │   ├── MetricsForm.jsx
+    │   │   ├── Suggestions.jsx
+    │   │   ├── SummaryCards.jsx
+    │   │   └── YoutubeSection.jsx
+    │   ├── context/
+    │   │   ├── HealthContext.jsx
+    │   │   └── WebSocketContext.jsx
+    │   └── lib/
+    │       └── api.js
+    └── package.json
+```
+
+## 💻 Technologies Used
+
+### Backend
+- Node.js
+- Express.js
+- MongoDB
+- Socket.IO
+- Google APIs
+- JSON Web Tokens
+
+### Frontend
+- React
+- Vite
+- TailwindCSS
+- Socket.IO Client
+- FullCalendar
+- Chart.js
+- Axios
+
+## 🔐 Security
+
+- CORS enabled
+- Environment variables for sensitive data
+- Token-based authentication
+- Secure WebSocket connections
+- API key protection
+
+## 🤝 Contributing
+
+1. Fork the repository
+2. Create your feature branch: `git checkout -b feature/YourFeature`
+3. Commit your changes: `git commit -m 'Add some feature'`
+4. Push to the branch: `git push origin feature/YourFeature`
+5. Open a pull request
+
+## 📝 License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+## 🙏 Acknowledgments
+
+- Google Calendar API
+- YouTube Data API
+- OpenAI for AI capabilities
+- MongoDB for database services
+- TailwindCSS for styling
+
+## 👤 Author
+
+**Rajesh Aligeti**
+- GitHub: [@Rajeshaligeti](https://github.com/Rajeshaligeti)
 
 ---
 
-## 🧩 Resume Highlights
-
-- Built full-stack MERN healthcare application with AI integration  
-- Implemented AI symptom analysis  
-- Designed REST APIs  
-- Developed responsive React UI  
-- Integrated external AI services  
-
----
-
-## 🔮 Future Enhancements
-
-- Wearable integration  
-- Medical report uploads  
-- Doctor consultation  
-- Recommendation system  
-
+Made with ❤️ for better healthcare tracking and management.
 ---
 
 ⭐ If you like this project, feel free to star the repo!
